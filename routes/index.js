@@ -2,7 +2,8 @@ var express  = require("express");
 var router   = express.Router();
 var User     = require("../model/user");
 var passport = require("passport");
-
+var Diagnostic = require('../model/diagnostic');
+var middleware    = require('../middleware');
 
 router.get("/",function(req,res){
     res.render("index");
@@ -15,6 +16,32 @@ router.get("/fd",function(req,res){
 router.get("/guide",function(req,res){
     res.render("guide");
 });
+
+//Diagnostic routes
+router.get("/diagnostic",middleware.isLoggedIn,function(req,res){
+    res.render("diagnostic");
+});
+
+router.post("/diagnostic",function(req,res){
+    var newDiagnostic = new Diagnostic({age: req.body.age,
+                                        gender: req.body.gender,
+                                        family_history: req.body.family_history,
+                                        benefits: req.body.benefits,
+                                        care_options: req.body.care_options,
+                                        anonymity: req.body.anonymity,
+                                        leave: req.body.leave,
+                                        work_interfere: req.body.work_interfere});
+    Diagnostic.create(newDiagnostic, function(err, newlyCreatedDiagnostic){
+          if(err){
+              console.log(err);
+          } else {
+              //redirect back to campgrounds page
+              console.log(newlyCreatedDiagnostic);
+              res.redirect("/name");
+          }
+      });
+});
+
 //======================
 //  AUTH ROUTES
 //======================
