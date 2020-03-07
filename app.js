@@ -51,5 +51,5 @@ app.use("/campgrounds", CampgroundsRoutes);
 
 
 app.listen(3000,function(){
-    console.log("The CampsiteView Server has started");
+    console.log("The Server has started");
 });
