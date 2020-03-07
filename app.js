@@ -8,9 +8,9 @@ var express         = require('express'),
     passport        = require('passport'),
     LocalStrategy   = require('passport-local'),
     methodOverrride = require('method-override'),
-    Campgrounds     = require('./models/campground'),
+    Campgrounds     = require('./model/campground'),
  // Comment         = require('./models/comment'),
-    User            = require('./models/user');
+    User            = require('./model/user');
  //   seedDB          = require('./seeds');
 
 var CampgroundsRoutes = require("./routes/campgrounds"),
@@ -51,5 +51,5 @@ app.use("/campgrounds", CampgroundsRoutes);
 
 
 app.listen(3000,function(){
-    console.log("The Server has started");
+    console.log(" Server has started");
 });

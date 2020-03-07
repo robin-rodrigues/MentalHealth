@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html class="no-js" lang="zxx">
 
 <head>
@@ -11,18 +11,18 @@
     <!-- <link rel="manifest" href="site.webmanifest"> -->
 
     <!-- CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/css/magnific-popup.css">
-    <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/themify-icons.css">
-    <link rel="stylesheet" href="/css/nice-select.css">
-    <link rel="stylesheet" href="/css/flaticon.css">
-    <link rel="stylesheet" href="/css/gijgo.css">
-    <link rel="stylesheet" href="/css/animate.min.css">
-    <link rel="stylesheet" href="/css/slick.css">
-    <link rel="stylesheet" href="/css/slicknav.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/nice-select.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/gijgo.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/slicknav.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 </head>
 
@@ -48,8 +48,16 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a class="active" href="index.html">home</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a class="active" href="/">home</a></li>
+                                        <li><a href="/">Contact</a></li>
+                                        <% if(!currentUser){ %>
+                                            <li><a href="/login">Login</a></li>
+                                            <li><a href="/register">Sign Up</a></li>
+                                        <% }else{ %>    
+                                            <li><a href="#">Signed in as <%= currentUser.username %></a></li>
+                                            <li><a href="/logout">Logout</a></li>
+                                            <li><a href="/guide">Guide</a></li>
+                                        <% } %>   
                                     </ul>
                                 </nav>
                             </div>
@@ -57,10 +65,11 @@
                         <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                             <div class="Appointment">
                                 <div class="book_btn d-none d-lg-block">
-                                    <a  href="fd.html">Take Test</a>
+                                    <a  href="/fd">Take Test</a>
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-12">
                             <div class="mobile_menu d-block d-lg-none"></div>
                         </div>
@@ -328,13 +337,12 @@
                 <div class="col-xl-7 col-md-6 col-lg-6 col-sm-12">
                     <h3 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".1s">If you feel like life is sinking try positive thinking. <br><br> Take test now <br> to know more about your <br> mental health</h3>
                 </div>
-                
                 <iframe
-                    allow="microphone;"
-                    width="350"
-                    height="430"
-                    src="https://console.dialogflow.com/api-client/demo/embedded/3663f5ae-9b5a-4ffc-bd6b-0c24efecbb5b">
-                </iframe> 
+                allow="microphone;"
+                width="350"
+                height="430"
+                src="https://console.dialogflow.com/api-client/demo/embedded/3663f5ae-9b5a-4ffc-bd6b-0c24efecbb5b">
+            </iframe>
             </div>
         </div>
     </div>
@@ -395,33 +403,33 @@
         <!--/ footer end  -->
 
     <!-- JS -->
-    <script src="/js/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="/js/popper.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/owl.carousel.min.js"></script>
-    <script src="/js/isotope.pkgd.min.js"></script>
-    <script src="/js/ajax-form.js"></script>
-    <script src="/js/waypoints.min.js"></script>
-    <script src="/js/jquery.counterup.min.js"></script>
-    <script src="/js/imagesloaded.pkgd.min.js"></script>
-    <script src="/js/scrollIt.js"></script>
-    <script src="/js/jquery.scrollUp.min.js"></script>
-    <script src="/js/wow.min.js"></script>
-    <script src="/js/nice-select.min.js"></script>
-    <script src="/js/jquery.slicknav.min.js"></script>
-    <script src="/js/jquery.magnific-popup.min.js"></script>
-    <script src="/js/plugins.js"></script>
-    <script src="/js/gijgo.min.js"></script>
+    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/ajax-form.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/scrollIt.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/nice-select.min.js"></script>
+    <script src="js/jquery.slicknav.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/gijgo.min.js"></script>
 
     <!--contact js-->
-    <script src="/js/contact.js"></script>
-    <script src="/js/jquery.ajaxchimp.min.js"></script>
-    <script src="/js/jquery.form.js"></script>
-    <script src="/js/jquery.validate.min.js"></script>
-    <script src="/js/mail-script.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/jquery.ajaxchimp.min.js"></script>
+    <script src="js/jquery.form.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/mail-script.js"></script>
 
-    <script src="/js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

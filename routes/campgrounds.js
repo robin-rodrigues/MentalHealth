@@ -1,6 +1,6 @@
 var express       = require("express");
 var router        = express.Router();
-var Campgrounds   = require('../models/campground');
+var Campgrounds   = require('../model/campground');
 var middleware    = require('../middleware');
    
 

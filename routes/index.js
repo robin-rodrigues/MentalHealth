@@ -1,6 +1,6 @@
 var express  = require("express");
 var router   = express.Router();
-var User     = require("../models/user");
+var User     = require("../model/user");
 var passport = require("passport");
 
 
@@ -8,6 +8,13 @@ router.get("/",function(req,res){
     res.render("index");
 });
 
+router.get("/fd",function(req,res){
+    res.render("fd");
+});
+
+router.get("/guide",function(req,res){
+    res.render("guide");
+});
 //======================
 //  AUTH ROUTES
 //======================
@@ -25,7 +32,7 @@ router.post("/register",function(req,res){
        }
        passport.authenticate("local")(req,res,function(){
            req.flash("success","Welcome to CampsiteView " +  user.username);
-           res.redirect("/campgrounds");
+           res.redirect("/");
        });
     });
 });
@@ -36,7 +43,7 @@ router.get("/login",function(req,res){
 });
 //handling login logic
 router.post("/login",passport.authenticate("local",{
-    successRedirect:"/campgrounds",
+    successRedirect:"/",
     failureRedirect:"/login"
  }),function(req,res){
  });
@@ -45,7 +52,7 @@ router.post("/login",passport.authenticate("local",{
  router.get("/logout",function(req,res){
     req.logout();
     req.flash("success","Logged you out!");
-    res.redirect("/campgrounds");
+    res.redirect("/");
  });
 
 
