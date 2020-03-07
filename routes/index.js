@@ -11,6 +11,10 @@ router.get("/",function(req,res){
 router.get("/fd",function(req,res){
     res.render("fd");
 });
+
+router.get("/guide",function(req,res){
+    res.render("guide");
+});
 //======================
 //  AUTH ROUTES
 //======================
