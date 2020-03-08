@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+
+
+    <title>Bootstrap Sandbox</title>
+</head>
+<body>
+    <div class="">
+        <div class="cards-list">
+  
+            <div class="card 1">
+              <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+              <div class="card_title title-white">
+                <p>Meditate</p>
+              </div>
+            </div>
+            
+              <div class="card 2">
+              <div class="card_image">
+                <img src="https://cdn.blackmilkclothing.com/media/wysiwyg/Wallpapers/PhoneWallpapers_FloralCoral.jpg" />
+                </div>
+              <div class="card_title title-white">
+                <p>Hopes</p>
+              </div>
+            </div>
+            
+            <div class="card 3">
+              <div class="card_image">
+                <img src="https://media.giphy.com/media/10SvWCbt1ytWCc/giphy.gif" />
+              </div>
+              <div class="card_title">
+                <p>Blogs</p>
+              </div>
+            </div>
+              
+              <div class="card 4">
+              <div class="card_image">
+                <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif" />
+                </div>
+              <div class="card_title title-black">
+                <p>Goals</p>
+              </div>
+              </div>
+            
+            </div>
+        <div class="row">
+    <link rel="stylesheet" href="../public/css/style.css">
+          <div class="col"><a href="#section1" class="btn btn-primary btn-block ml-2">Meditate</a></div>
+          <div class="col"><a button href="#section2" class="btn btn-primary btn-block ml-2">Hopes</a></div>
+          <div class="col"><a href="#section3"  class="btn btn-primary btn-block ml-2">Blogs</a></div>
+          <div class="col"><a href="#section4"  class="btn btn-primary btn-block ml-2">Goals</a></div>  
+        </div>
+      </div>
+
+      <div class="jumbotron container mt-4 border border-primary rounded" id="section4">
+        <h5 class="display-4 text-center">
+          <i class="fas fa-book-open text-primary"></i> My<span class="text-primary">To</span>Do</h5>
+          <form id="book-form">
+            <div class="form-group">
+              <label for="title" >Category</label>
+              <input type="text" id="title" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="author">toDo your goals</label>
+              <input type="text" id="author" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="isbn">Target Days</label>
+              <input type="text" id="isbn" class="form-control">
+            </div>
+            <input type="submit" value="Add Book" class="btn btn-primary btn-block">
+          </form>
+          <table class="table table-striped mt-5">
+            <thead>
+              <tr>
+                <th >category</th>
+                <th >Goals</th>
+                <th >Date</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="book-list"></tbody>
+          </table>
+      </div>
+
+
+    
+      <script>
+          // Book Class: Represents a Book
+class Book {
+  constructor(title, author, isbn) {
+    this.title = title;
+    this.author = author;
+    this.isbn = isbn;
+  }
+}
+
+// UI Class: Handle UI Tasks
+class UI {
+  static displayBooks() {
+    const books = Store.getBooks();
+
+    books.forEach((book) => UI.addBookToList(book));
+  }
+
+  static addBookToList(book) {
+    const list = document.querySelector('#book-list');
+
+    const row = document.createElement('tr');
+
+    row.innerHTML = `
+      <td>${book.title}</td>
+      <td>${book.author}</td>
+      <td>${book.isbn}</td>
+      <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
+
+    `;
+
+    list.appendChild(row);
+  }
+
+  static deleteBook(el) {
+    if(el.classList.contains('delete')) {
+      el.parentElement.parentElement.remove();
+    }
+  }
+
+  static showAlert(message, className) {
+    const div = document.createElement('div');
+    div.className = `alert alert-${className}`;
+    div.appendChild(document.createTextNode(message));
+    const container = document.querySelector('.container');
+    const form = document.querySelector('#book-form');
+    container.insertBefore(div, form);
+
+    // Vanish in 3 seconds
+    setTimeout(() => document.querySelector('.alert').remove(), 3000);
+  }
+
+  static clearFields() {
+    document.querySelector('#title').value = '';
+    document.querySelector('#author').value = '';
+    document.querySelector('#isbn').value = '';
+  }
+}
+
+// Store Class: Handles Storage
+class Store {
+  static getBooks() {
+    let books;
+    if(localStorage.getItem('books') === null) {
+      books = [];
+    } else {
+      books = JSON.parse(localStorage.getItem('books'));
+    }
+
+    return books;
+  }
+
+  static addBook(book) {
+    const books = Store.getBooks();
+    books.push(book);
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+
+  static removeBook(isbn) {
+    const books = Store.getBooks();
+
+    books.forEach((book, index) => {
+      if(book.isbn === isbn) {
+        books.splice(index, 1);
+      }
+    });
+
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+}
+
+// Event: Display Books
+document.addEventListener('DOMContentLoaded', UI.displayBooks);
+
+// Event: Add a Book
+document.querySelector('#book-form').addEventListener('submit', (e) => {
+  // Prevent actual submit
+  e.preventDefault();
+
+  // Get form values
+  const title = document.querySelector('#title').value;
+  const author = document.querySelector('#author').value;
+  const isbn = document.querySelector('#isbn').value;
+
+  // Validate
+  if(title === '' || author === '' || isbn === '') {
+    UI.showAlert('Please fill in all fields', 'danger');
+  } else {
+    // Instatiate book
+    const book = new Book(title, author, isbn);
+
+    // Add Book to UI
+    UI.addBookToList(book);
+
+    // Add book to store
+    Store.addBook(book);
+
+    // Show success message
+    UI.showAlert('Book Added', 'success');
+
+    // Clear fields
+    UI.clearFields();
+  }
+});
+
+// Event: Remove a Book
+document.querySelector('#book-list').addEventListener('click', (e) => {
+  // Remove book from UI
+  UI.deleteBook(e.target);
+
+  // Remove book from store
+  Store.removeBook(e.target.parentElement.previousElementSibling.textContent);
+
+  // Show success message
+  UI.showAlert('Book Removed', 'success');
+});
+      </script>
+
+<!--PEN CODE-->
+<section class="container jumbotron border border-primary rounded" id="section3">
+  
+    
+    <div class="new-task-container box">
+    
+    <label for="new-task" class="alert alert-primary">Add New blog</label>
+    <input type="text" id="new-task" size="90" style="height: 50px;" placeholder="Add here">
+      <button id="addTask">Add</button>
+    
+    </div>
+    
+    <div class="todo-list box">
+    
+      <h2 class="alert alert-danger">Your Blogs</h2>
+      <ul>
+        <li><input type="checkbox"><label>As we go through life, it’s easy to get caught up in the status quo. You start to believe that average is acceptable and that since others are settling, then it’s ok to do the same. As soon as you notice this start to happen, something must be done to snap out of it!
+
+            I’ve found a few blogs that do this especially well. They guide me to live a more purposeful life while encouraging me to do it on my terms. There is no substitute for people who have done it. Below are my top 10 blogs both as personal development resources and thought changers.</lable></li>
+        
+      </ul>
+    
+    </div><!--/todo-list-->
+    
+    <div class="complete-list box">
+      
+      <!-- <h2>Completed Tasks</h2> -->
+      <ul>
+        <li><button class="delete btn btn-block"></button></li>
+  
+      </ul>
+      
+      
+    </div>
+    
+    
+    
+    
+    
+  </section><!--/container-->
+<!--END PEN CODE-->
+
+<script>
+    //SELECT ELEMENTS AND ASSIGN THEM TO VARS
+var newTask = document.querySelector('#new-task');
+var addTaskBtn = document.querySelector('#addTask');
+
+var toDoUl = document.querySelector(".todo-list ul");
+var completeUl =  document.querySelector(".complete-list ul");
+
+
+//CREATE FUNCTIONS
+
+//CREATING THE ACTUAL TASK LIST ITEM
+var createNewTask = function(task){
+  console.log("Creating task...");
+  
+  //SET UP THE NEW LIST ITEM
+  var listItem = document.createElement("li"); //<li>
+  var checkBox = document.createElement("input"); //checkbox
+  var label = document.createElement("label"); // <label>
+  
+  
+  //PULL THE INPUTED TEXT INTO LABEL
+  label.innerText = task;
+  
+  //ADD PROPERTIES
+  checkBox.type = "checkbox";
+  
+  //ADD ITEMS TO THE LI
+  listItem.appendChild(checkBox);
+  listItem.appendChild(label);
+  //EVERYTHING PUT TOGETHER
+  return listItem;  
+  
+};
+
+//ADD THE NEW TASK INTO ACTUAL INCOMPLETE LIST
+var addTask = function(){
+  console.log("Adding task...");
+  //FOR CLARITY, GRAB THE INPUTTED TEXT AND STORE IT IN A VAR
+  var listItem = createNewTask(newTask.value);
+  //ADD THE NEW LIST ITEM TO LIST
+  toDoUl.appendChild(listItem); 
+  //CLEAR THE INPUT
+  newTask.value="";
+  
+  //BIND THE NEW LIST ITEM TO THE INCOMPLETE LIST
+  bindIncompleteItems(listItem, completeTask);
+
+};
+
+var completeTask = function(){
+  
+  //GRAB THE CHECKBOX'S PARENT ELEMENT, THE LI IT'S IN
+  var listItem = this.parentNode;
+  
+  //CREATE AND INSERT THE DELETE BUTTON
+  var deleteBtn = document.createElement("button"); // <button>
+  deleteBtn.innerText ="Delete"; 
+  deleteBtn.className = "delete";
+  listItem.appendChild(deleteBtn);
+  
+  //SELECT THE CHECKBOX FROM THE COMPLETED CHECKBOX AND REMOVE IT
+  var checkBox = listItem.querySelector("input[type=checkbox]");
+  checkBox.remove();
+  
+  //PLACE IT INSIDE THE COMPLETED LIST
+  completeUl.appendChild(listItem); 
+  
+  //BIND THE NEW COMPLETED LIST
+  bindCompleteItems(listItem, deleteTask);
+  
+};
+
+//DELETE TASK FUNCTIONS
+var deleteTask = function(){
+  console.log("Deleting task...");
+  
+  var listItem = this.parentNode;
+  var ul = listItem.parentNode;
+  
+  ul.removeChild(listItem);
+  
+};
+
+//A FUNCTION THAT BINDS EACH OF THE ELEMENTS THE INCOMPLETE LIST
+
+var bindIncompleteItems = function(taskItem, checkBoxClick){  
+  console.log("Binding the incomplete list...");
+  
+  //BIND THE CHECKBOX TO A VAR
+  var checkBox = taskItem.querySelector("input[type=checkbox]");
+  
+  //SETUP EVENT LISTENER FOR THE CHECKBOX
+  checkBox.onchange = checkBoxClick;  
+}; 
+
+
+//A FUNCTIONM THAT BINDS EACH OF THE ELEMTS IN THE COMPLETE LIST
+var bindCompleteItems = function(taskItem, deleteButtonPress){
+  console.log("Binding the complete list...");
+  
+  //BIND THE DELETE BUTTON
+  var deleteButton = taskItem.querySelector(".delete");
+   
+  //WHEN THE DELETE BUTTIN IS PRESSED, RUN THE deleteTask function
+  deleteButton.onclick = deleteButtonPress;
+    
+};
+
+
+for(var i=0; i < toDoUl.children.length; i++) {
+  bindIncompleteItems(toDoUl.children[i], completeTask);
+}
+
+for(var i=0; i < completeUl.children.length; i++) {
+  bindCompleteItems(completeUl.children[i], deleteTask);
+}
+
+
+addTaskBtn.addEventListener("click", addTask);
+
+
+</script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
+</body>
