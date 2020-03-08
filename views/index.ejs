@@ -40,7 +40,7 @@
                         <div class="col-xl-3 col-lg-2">
                             <div class="logo">
                                 <a href="/">
-                                    <img src="img/logo.png" alt="Logo">
+                                    <img src="img/logo.png" alt="Logo" height="50px" width="50px">
                                 </a>
                             </div>
                         </div>
@@ -49,15 +49,13 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a class="active" href="/">home</a></li>
-                                        <li><a href="/">Contact</a></li>
                                         <% if(!currentUser){ %>
                                             <li><a href="/login">Login</a></li>
                                             <li><a href="/register">Sign Up</a></li>
                                         <% }else{ %>    
-                                            <li><a href="#">Signed in as <%= currentUser.username %></a></li>
+                                            <li><a href="#"><%= currentUser.username %></a></li>
+                                            <li><a href="/dashboard">Dashboard</a></li>
                                             <li><a href="/logout">Logout</a></li>
-                                            <li><a href="/diagnostic">Diagnostics</a></li>
-                                            <li><a href="/guide">Guide</a></li>
                                         <% } %>   
                                     </ul>
                                 </nav>
@@ -66,7 +64,7 @@
                         <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                             <div class="Appointment">
                                 <div class="book_btn d-none d-lg-block">
-                                    <a  href="/fd">Take Test</a>
+                                    <a  href="/questions">Take Test</a>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +89,7 @@
                             <h3 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".1s" >Your Mental Fitness Assistant</h3>
                             <p class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".1s">Your mental illness doesn’t define you but your fight with it will definitely do it</p>
                             <div class="video_service_btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".1s">
-                                <a href="/fd" class="boxed-btn3">Take Test Now</a>
+                                <a href="/diagnostic" class="boxed-btn3">Diagnostics</a>
                             </div>
                         </div>
                     </div>
@@ -118,14 +116,6 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-4">
-                    <div class="single_service text-center wow fadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
-                        <div class="thumb">
-                                <img src="img/icon/2.svg" alt="">
-                        </div>
-                        <h3>Various Tests<br>Downloadable Results</h3>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4">
                     <div class="single_service text-center wow fadeInUp" data-wow-duration=".7s" data-wow-delay=".5s">
                         <div class="thumb">
                             <img src="img/icon/1.svg" alt="">
@@ -141,6 +131,13 @@
                         <h3>Chatbot For Assistance</h3>
                     </div>
                 </div>
+                <iframe
+                    allow="microphone;"
+                    width="350"
+                    height="430"
+                    src="https://console.dialogflow.com/api-client/demo/embedded/3663f5ae-9b5a-4ffc-bd6b-0c24efecbb5b">
+                </iframe>
+
             </div>
         </div>
     </div>
@@ -149,18 +146,6 @@
     <!-- service_area_2  -->
     <div class="service_area_2">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-xl-6 col-lg-6 col-md-6 wow fadeInLeft" data-wow-duration=".4s" data-wow-delay=".5s">
-                    <div class="man_thumb">
-                        <img src="img/ilstrator_img/mental_health_India.jpg" alt="Mental HEalth India">
-                    </div>
-                </div>
-                <div class="col-xl-5 offset-xl-1 col-lg-6 col-md-6 ">
-                    <div class="mobile_screen wow fadeInRight" data-wow-duration=".8s" data-wow-delay=".5s">
-                        <img src="img/ilstrator_img/did_you_know.png" alt="Did You Know">
-                    </div>
-                </div>
-            </div>
             <div class="service_content_wrap">
                 <div class="row">
                     <div class="col-lg-4 col-md-4">
@@ -338,12 +323,6 @@
                 <div class="col-xl-7 col-md-6 col-lg-6 col-sm-12">
                     <h3 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".1s">If you feel like life is sinking try positive thinking. <br><br> Take test now <br> to know more about your <br> mental health</h3>
                 </div>
-                <iframe
-                allow="microphone;"
-                width="350"
-                height="430"
-                src="https://console.dialogflow.com/api-client/demo/embedded/3663f5ae-9b5a-4ffc-bd6b-0c24efecbb5b">
-            </iframe>
             </div>
         </div>
     </div>

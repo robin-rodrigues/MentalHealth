@@ -3,31 +3,43 @@
 <head>
 	<title>Color Game</title>
 	<link rel="stylesheet" type="text/css" href="colorGame.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<h1 id="question">"I will never succeed in life"</h1>
+<h1 id="question" class="bg-light"style="font-size:50px;height: 100px;color:black">"I will never succeed in life"</h1>
 
 
-<div id="stripe">
-	<span id="message"></span>
+<div id="stripe display-4">
+	<span id="message" class="alert alert-primary"></span>
 	<button id="btn" onclick="nextquestion()">Next</button>
 	<a href="#" id="link">Home</a>
+	
 
 </div>
 
 	<div id="container">
-		<div class="square" id="1" onclick="getSquares(this.id)">All or Nothing Thinking</div>
-		<div class="square" id="2" onclick="getSquares(this.id)" >Overgeneralizing</div>
-		<div class="square" id="3" onclick="getSquares(this.id)">Filtering out the positive</div>
-		<div class="square" id="4" onclick="getSquares(this.id)">Mind Reading</div>
-		<div class="square" id="5" onclick="getSquares(this.id)">Castrophizing</div>
-		<div class="square" id="6" onclick="getSquares(this.id)">Emotional Reasoning</div>
-		<div class="square" id="7" onclick="getSquares(this.id)">Labelling</div>
-		<div class="square" id="8" onclick="getSquares(this.id)">Fortune-telling</div>
-		<div class="square" id="9" onclick="getSquares(this.id)">Personalization</div>
-		<div class="square" id="10" onclick="getSquares(this.id)">Unreal Ideal</div>
+		<div class="row">
+		<div class="square bg-dark col" id="1" onclick="getSquares(this.id)"><span class="mt-5" style="color:white;">All or Nothing Thinking</span></div>
+		<div class="square bg-dark col" id="2" onclick="getSquares(this.id)"><span class="mt-5" style="color:white;">Overgeneralizing</span></div>
+		<div class="square bg-dark col" id="3" onclick="getSquares(this.id)"><span class="mt-5" style="color:white;">Filtering out the positive</span></div>
+		<div class="square bg-dark col" id="4" onclick="getSquares(this.id)"><span class="mt-5" style="color:white;">Mind Reading</span></div>
+		<div class="square bg-dark col" id="5" onclick="getSquares(this.id)"><span class="mt-5" style="color:white;">Castrophizing</span></div>
 	</div>
-
+	<div class="row">
+		<div class="square bg-dark col" id="6" onclick="getSquares(this.id)"><span class="mt-5" style="color:white;">Emotional Reasoning</span></div>
+		<div class="square bg-dark col" id="7" onclick="getSquares(this.id)"><span class="mt-5" style="color:white;">Labelling</span></div>
+		<div class="square bg-dark col" id="8" onclick="getSquares(this.id)"><span class="mt-5" style="color:white;">Fortune-telling</span></div>
+		<div class="square bg-dark col" id="9" onclick="getSquares(this.id)"><span class="mt-5" style="color:white;">Personalization</span></div>
+		<div class="square bg-dark col" id="10" onclick="getSquares(this.id)"><span class="mt-5" style="color:white;">Unreal Ideal</span></div>
+	</div></div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+	crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+	crossorigin="anonymous"></script>
 <script type="text/javascript" src="colorGame.js"></script>
 </body>
 </html>

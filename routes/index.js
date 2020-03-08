@@ -12,9 +12,9 @@ router.get("/fd",function(req,res){
     res.render("fd");
 });
 
-router.get("/guide",function(req,res){
-    res.render("guide");
-});
+// router.get("/guide",function(req,res){
+//     res.render("guide");
+// });
 
 //Diagnostic routes
 router.get("/diagnostic",function(req,res){
@@ -39,6 +39,10 @@ router.get("/blog",function(req,res){
 
 router.get("/games",function(req,res){
     res.render("colorGame");
+});
+
+router.get("/questions",function(req,res){
+    res.render("questions");
 });
 
 
