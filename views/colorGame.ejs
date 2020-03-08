@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Color Game</title>
+	<link rel="stylesheet" type="text/css" href="colorGame.css">
+</head>
+<body>
+<h1 id="question">"I will never succeed in life"</h1>
+
+
+<div id="stripe">
+	<span id="message"></span>
+	<button id="btn" onclick="nextquestion()">Next</button>
+	<a href="#" id="link">Home</a>
+
+</div>
+
+	<div id="container">
+		<div class="square" id="1" onclick="getSquares(this.id)">All or Nothing Thinking</div>
+		<div class="square" id="2" onclick="getSquares(this.id)" >Overgeneralizing</div>
+		<div class="square" id="3" onclick="getSquares(this.id)">Filtering out the positive</div>
+		<div class="square" id="4" onclick="getSquares(this.id)">Mind Reading</div>
+		<div class="square" id="5" onclick="getSquares(this.id)">Castrophizing</div>
+		<div class="square" id="6" onclick="getSquares(this.id)">Emotional Reasoning</div>
+		<div class="square" id="7" onclick="getSquares(this.id)">Labelling</div>
+		<div class="square" id="8" onclick="getSquares(this.id)">Fortune-telling</div>
+		<div class="square" id="9" onclick="getSquares(this.id)">Personalization</div>
+		<div class="square" id="10" onclick="getSquares(this.id)">Unreal Ideal</div>
+	</div>
+
+<script type="text/javascript" src="colorGame.js"></script>
+</body>
+</html>

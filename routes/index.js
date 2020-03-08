@@ -25,6 +25,23 @@ router.get("/meditation",function(req,res){
     res.render("meditation");
 });
 
+router.get("/dashboard",function(req,res){
+    res.render("dashboard");
+});
+
+router.get("/goals",function(req,res){
+    res.render("goals");
+});
+
+router.get("/blog",function(req,res){
+    res.render("blog");
+});
+
+router.get("/games",function(req,res){
+    res.render("colorGame");
+});
+
+
 router.post("/diagnostic",function(req,res){
     var newDiagnostic = new Diagnostic({age: req.body.age,
                                         gender: req.body.gender,

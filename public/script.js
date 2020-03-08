@@ -22,7 +22,7 @@ video.addEventListener('play', () => {
   faceapi.matchDimensions(canvas, displaySize)
   setInterval(async () => {
     const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
-    if(detections[0].expressions["happy"]>0.9)
+    if(detections[0].expressions["happy"]>0.95)
     {
       alert("Happy")
     }
