@@ -1,0 +1,158 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Mindfulness</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/nice-select.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/gijgo.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/slicknav.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+</head>
+
+<body>
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+    <!-- header-start -->
+    <header>
+        <div class="header-area ">
+            <div id="sticky-header" class="main-header-area">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-xl-3 col-lg-2">
+                            <div class="logo">
+                                <a href="index.html">
+                                    <img src="img/logo.png" alt="Logo">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-7">
+                            <div class="main-menu  d-none d-lg-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a class="active" href="/">home</a></li>
+                                        <li><a href="/">Contact</a></li>
+                                        <% if(!currentUser){ %>
+                                            <li><a href="/login">Login</a></li>
+                                            <li><a href="/register">Sign Up</a></li>
+                                        <% }else{ %>    
+                                            <li><a href="#">Signed in as <%= currentUser.username %></a></li>
+                                            <li><a href="/logout">Logout</a></li>
+                                            <li><a href="/diagnostic">Diagnostics</a></li>
+                                            <li><a href="/guide">Guide</a></li>
+                                        <% } %>   
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                            <div class="Appointment">
+                                <div class="book_btn d-none d-lg-block">
+                                    <a  href="/fd">Take Test</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+        <!-- testmonial_area  -->
+        <div class="testmonial_area">
+            <div class="container">
+                <div class="col-xl-12">
+                    <div class="testmonial_active owl-carousel">
+                        <div class="single_testmonial text-center wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".3s">
+                            <h1>Meditation</h1>
+                            <div class="row" style="padding: 20px;">
+                                <div class="col">
+                                    <iframe width="420" height="345" src="https://www.youtube.com/embed/hJbRpHZr_d0" >
+                                    </iframe>
+                                    
+                                </div>
+                                <div class="col">
+                                    <iframe width="420" height="345" src="https://www.youtube.com/embed/4pLUleLdwY4">
+                                    </iframe>
+                                </div>
+                            </div>
+                            <div class="row"  style="padding: 20px;">  
+                                <div class="col">                        
+                                    <iframe width="420" height="345" src="https://www.youtube.com/embed/JslvBcIVtDg">
+                                    </iframe>
+                                </div>  
+                                <div class="col">  
+                                    <iframe width="420" height="345" src="https://www.youtube.com/embed/l9QnouWxfiM">
+                                    </iframe>
+                                </div>
+                            </div>
+                            <div class="row"  style="padding: 20px;">  
+                                <div class="col">                        
+                                    <iframe width="420" height="345" src="https://www.youtube.com/embed/LZo-UCaxiBM">
+                                    </iframe>
+                                </div>  
+                                <div class="col">  
+                                    <iframe width="420" height="345" src="https://www.youtube.com/embed/KQOAVZew5l8">
+                                    </iframe>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- JS -->
+    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/ajax-form.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/scrollIt.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/nice-select.min.js"></script>
+    <script src="js/jquery.slicknav.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/gijgo.min.js"></script>
+
+    <!--contact js-->
+    <script src="js/contact.js"></script>
+    <script src="js/jquery.ajaxchimp.min.js"></script>
+    <script src="js/jquery.form.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/mail-script.js"></script>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

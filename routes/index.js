@@ -3,7 +3,6 @@ var router   = express.Router();
 var User     = require("../model/user");
 var passport = require("passport");
 var Diagnostic = require('../model/diagnostic');
-var middleware    = require('../middleware');
 
 router.get("/",function(req,res){
     res.render("index");
@@ -18,8 +17,12 @@ router.get("/guide",function(req,res){
 });
 
 //Diagnostic routes
-router.get("/diagnostic",middleware.isLoggedIn,function(req,res){
+router.get("/diagnostic",function(req,res){
     res.render("diagnostic");
+});
+
+router.get("/meditation",function(req,res){
+    res.render("meditation");
 });
 
 router.post("/diagnostic",function(req,res){
