@@ -44,27 +44,12 @@ from sklearn.naive_bayes import GaussianNB
 #Stacking
 from mlxtend.classifier import StackingClassifier
 
-# Input data files are available in the "../input/" directory.
-# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory
-
-# from subprocess import check_output
-# print(check_output(["ls", "../input"]).decode("utf8"))
-
-# Any results you write to the current directory are saved as output.
-
-#reading in CSV's from a file path
 train_df = pd.read_csv('C:/Users/hp/Desktop/survey-1.csv')
 
-
-#Pandas: whats the data row count?
-#print(train_df.shape)
-    
-#Pandas: whats the distribution of the data?
-#print(train_df.describe())
-    
-#Pandas: What types of data do i have?
-#print(train_df.info())
-
+data=[[sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5],sys.argv[6],sys.argv[7],sys.argv[8]]]
+# Create the pandas DataFrame 
+df = pd.DataFrame(data, columns = ['Age','Gender','family_history','benefits','care_options','anonymity','leave','work_interfere']) 
+  
 
 # In[162]:
 
@@ -782,8 +767,12 @@ boost.fit(X_train, y_train)
 
 # make class predictions for the testing set
 #y_pred_class = boost.predict(5)
-y_pred_class = boost.predict(X_test.iloc[0:1])
-print(y_pred_class)
+y_pred_class = boost.predict(df.iloc[0:1])
+#print(y_pred_class)
+a=np.array_str(y_pred_class)
 
-
+if(a[1]=='0'):
+    print("Test needed")
+else:
+    print("No Test needed")   
 
