@@ -49,14 +49,12 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a class="active" href="/">home</a></li>
-                                        <li><a href="/">Contact</a></li>
                                         <% if(!currentUser){ %>
                                             <li><a href="/login">Login</a></li>
                                             <li><a href="/register">Sign Up</a></li>
                                         <% }else{ %>    
-                                            <li><a href="#">Signed in as <%= currentUser.username %></a></li>
+                                            <li><a href="#"><%= currentUser.username %></a></li>
                                             <li><a href="/logout">Logout</a></li>
-                                            <li><a href="/diagnostic">Diagnostics</a></li>
                                             <li><a href="/guide">Guide</a></li>
                                         <% } %>   
                                     </ul>
@@ -91,7 +89,7 @@
                             <h3 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".1s" >Your Mental Fitness Assistant</h3>
                             <p class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".1s">Your mental illness doesn’t define you but your fight with it will definitely do it</p>
                             <div class="video_service_btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".1s">
-                                <a href="http://localhost:3000/" class="boxed-btn3">Take Test Now</a>
+                                <a href="/diagnostic" class="boxed-btn3">Diagnostic</a>
                             </div>
                         </div>
                     </div>
