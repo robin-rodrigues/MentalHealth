@@ -65,11 +65,19 @@ function callName(req, res) {
       
     // E.g : http://localhost:3000/name?firstname=Mike&lastname=Will 
     // so, first name = Mike and last name = Will 
-    var process = spawn('python',["./python.py"] ); 
-  
+    var process = spawn('python',["./python.py", 
+    req.query.age, 
+    req.query.gender,
+    req.query.family_history,
+    req.query.benefits,
+    req.query.care_options,
+    req.query.anonymity,
+    req.query.leave,
+    req.query.work_interfere] );
     // Takes stdout data from script which executed 
     // with arguments and send this data to res object 
     process.stdout.on('data', function(data) { 
+        console.log(data.toString());
         res.send(data.toString()); 
     } ) 
 } 
