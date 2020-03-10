@@ -81,7 +81,7 @@ function callName(req, res) {
         console.log(data)
         if(data.toString()==1)
         {
-            res.render("dashboard")
+            res.render("dashboard/dashboard")
         }
         if(data.toString()==0)
         {

@@ -9,32 +9,32 @@ router.get("/",function(req,res){
 });
 
 router.get("/fd",function(req,res){
-    res.render("fd");
+    res.render("diagnostic/fd");
 });
 
 //Diagnostic routes
 router.get("/diagnostic",function(req,res){
-    res.render("diagnostic");
+    res.render("diagnostic/diagnostic");
 });
 
 router.get("/meditation",function(req,res){
-    res.render("meditation");
+    res.render("dashboard/meditation");
 });
 
 router.get("/dashboard",function(req,res){
-    res.render("dashboard");
+    res.render("dashboard/dashboard");
 });
 
 router.get("/goals",function(req,res){
-    res.render("goals");
+    res.render("dashboard/goals");
 });
 
 router.get("/blog",function(req,res){
-    res.render("blog");
+    res.render("dashboard/blog");
 });
 
 router.get("/games",function(req,res){
-    res.render("colorGame");
+    res.render("dashboard/colorGame");
 });
 
 router.get("/questions",function(req,res){
@@ -67,7 +67,7 @@ router.post("/diagnostic",function(req,res){
 //======================
 //show register form
 router.get("/register",function(req,res){
-    res.render('register');
+    res.render('auth/register');
 });
 //handle signup logic
 router.post("/register",function(req,res){
@@ -75,7 +75,7 @@ router.post("/register",function(req,res){
     User.register(newUser, req.body.password, function(err,user){
        if(err){
            req.flash("error", err.message);
-           return res.render('register');
+           return res.render('auth/register');
        }
        passport.authenticate("local")(req,res,function(){
            req.flash("success","Welcome to CampsiteView " +  user.username);
@@ -86,7 +86,7 @@ router.post("/register",function(req,res){
 
 //show login form
 router.get("/login",function(req,res){
-    res.render('login');
+    res.render('auth/login');
 });
 //handling login logic
 router.post("/login",passport.authenticate("local",{
