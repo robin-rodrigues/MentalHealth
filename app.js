@@ -78,7 +78,15 @@ function callName(req, res) {
     // with arguments and send this data to res object 
     process.stdout.on('data', function(data) { 
         console.log(data.toString());
-        res.send(data.toString()); 
+        console.log(data)
+        if(data.toString()==1)
+        {
+            res.render("dashboard")
+        }
+        if(data.toString()==0)
+        {
+            res.render('index')
+        }
     } ) 
 } 
 

@@ -772,7 +772,7 @@ y_pred_class = boost.predict(df.iloc[0:1])
 a=np.array_str(y_pred_class)
 
 if(a[1]=='0'):
-    print("Test needed")
+    print(1)
 else:
-    print("No Test needed")   
+    print(0)   
 
