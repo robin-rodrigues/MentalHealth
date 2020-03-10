@@ -1,4 +1,6 @@
 const video = document.getElementById('video')
+var flag =0;
+let count =0;
 
 Promise.all([
   faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
@@ -22,10 +24,17 @@ video.addEventListener('play', () => {
   faceapi.matchDimensions(canvas, displaySize)
   setInterval(async () => {
     const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
+   if(flag == 0) {
     if(detections[0].expressions["happy"]>0.95)
     {
-      alert("Happy")
+      flag = 1
+      alert("Good Going!!! You seem to be Happy");
+      count++;
     }
+   }else{
+     count++;
+   }
+   
     const resizedDetections = faceapi.resizeResults(detections, displaySize)
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
     faceapi.draw.drawDetections(canvas, resizedDetections)

@@ -44,7 +44,7 @@ from sklearn.naive_bayes import GaussianNB
 #Stacking
 from mlxtend.classifier import StackingClassifier
 
-train_df = pd.read_csv('C:/Users/hp/Desktop/survey-1.csv')
+train_df = pd.read_csv('data/survey-1.csv')
 
 data=[[sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5],sys.argv[6],sys.argv[7],sys.argv[8]]]
 # Create the pandas DataFrame 

@@ -1,43 +1,78 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html class="no-js" lang="zxx">
 
 <head>
-    <title>Campsite</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/stylesheets/main.css">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Mindfulness</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <!-- <link rel="manifest" href="site.webmanifest"> -->
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/nice-select.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/gijgo.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/slicknav.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 </head>
 
 <body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">Mindfulness</a>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <% if(!currentUser){ %>
-                        <li><a href="/login">Login</a></li>
-                        <li><a href="/register">Sign Up</a></li>
-                    <% }else{ %>    
-                        <li><a href="#">Signed in as <%= currentUser.username %></a></li>
-                        <li><a href="/logout">Logout</a></li>
-                    <% } %>   
-                </ul>
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+    <!-- header-start -->
+    <header>
+        <div class="header-area">
+            <div id="sticky-header" class="main-header-area">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-xl-6 col-lg-7">
+                            <div class="main-menu  d-none d-lg-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a class="active" href="/">Mindfulness</a></li>
+                                        <% if(!currentUser){ %>
+                                            <li><a href="/login">Login</a></li>
+                                            <li><a href="/register">Sign Up</a></li>
+                                        <% }else{ %>    
+                                            <li><a href="#"><%= currentUser.username %></a></li>
+                                            <li><a href="/dashboard">Dashboard</a></li>
+                                            <li><a href="/logout">Logout</a></li>
+                                        <% } %>   
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                            <div class="Appointment">
+                                <div class="book_btn d-none d-lg-block">
+                                    <a  href="/questions">Take Test</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <div class="container">
-
-        <% if(error && error.length>0){ %>
-            <div class="alert alert-danger" role="alert">
-                <%= error %>
-            </div>
-        <% } %>    
-        <% if(success && success.length>0){ %>
-            <div class="alert alert-success" role="alert">
-                <%= success %>
-            </div>
-        <% } %>
-    </div>
     
+    <!-- header-end -->
+
+    <!-- slider_area_start -->
+    <div class="slider_area">
+        <div class="single_slider  d-flex align-items-center slider_bg_1">
+            <div class="container">

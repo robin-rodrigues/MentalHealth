@@ -1,0 +1,289 @@
+<% include ./partials/header %>
+<body>
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+      <div class="jumbotron">        
+        <h1>Quiz on Important Facts</h1>
+        <div class="quiz-container container">
+          <div id="quiz"></div>
+        </div>
+      </br>
+        <button id="previous">Previous Question</button>
+        <button id="next">Next Question</button>
+        <button id="submit">Submit Quiz</button>
+        <div id="results"></div>
+      </div>
+
+        <script>
+            (function(){
+  // Functions
+  function buildQuiz(){
+    // variable to store the HTML output
+    const output = [];
+
+    // for each question...
+    myQuestions.forEach(
+      (currentQuestion, questionNumber) => {
+        // variable to store the list of possible answers
+        const answers = [];
+
+        // and for each available answer...
+        for(letter in currentQuestion.answers){
+        
+          // ...add an HTML radio button
+          answers.push(
+            `<label>
+              <input  type="radio" name="question${questionNumber}" value="${letter}">
+              ${letter} :
+              ${currentQuestion.answers[letter]}
+            </label>`
+          );
+          
+        }
+        // add this question and its answers to the output
+        output.push(
+          `<div class="slide">
+            <div class="question"> ${currentQuestion.question} </div>
+            <div class="answers"> ${answers.join("")} </div>
+          </div>`
+        );
+      }
+    );
+
+    // finally combine our output list into one string of HTML and put it on the page
+    quizContainer.innerHTML = output.join('');
+  }
+
+  function showResults(){
+
+    // gather answer containers from our quiz
+    const answerContainers = quizContainer.querySelectorAll('.answers');
+
+    // keep track of user's answers
+    let ans = 0;
+    let final ='';
+    // for each question...
+    myQuestions.forEach( (currentQuestion, questionNumber) => {
+
+      // find selected answer
+      const answerContainer = answerContainers[questionNumber];
+      const selector = `input[name=question${questionNumber}]:checked`;
+      console.log(selector)
+      const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+     
+      ans= ans + parseInt(userAnswer);
+        console.log(ans)
+      
+      // if answer is correct
+      if(userAnswer === currentQuestion.correctAnswer){
+        // add to the number of correct answers
+        numCorrect++;
+
+        // color the answers green
+        answerContainers[questionNumber].style.color = 'lightgreen';
+      }
+      // if answer is wrong or blank
+      else{
+        // color the answers red
+        answerContainers[questionNumber].style.color = 'red';
+      }
+    });
+       
+    if (ans < 3) {
+           final="Not Present"
+        } else if (ans < 12) {
+            final="Mild Severity"
+        } else if (ans < 18) {
+            final="Mild to Moderate Severity"
+        } else if (ans < 24) {
+            final="Moderate to Severe"
+        } else {
+            final="Extreme"
+        }
+       
+    // show number of correct answers out of ans
+    resultsContainer.innerHTML = `${final}`;
+  }
+
+  function showSlide(n) {
+    slides[currentSlide].classList.remove('active-slide');
+    slides[n].classList.add('active-slide');
+    currentSlide = n;
+    if(currentSlide === 0){
+      previousButton.style.display = 'none';
+    }
+    else{
+      previousButton.style.display = 'inline-block';
+    }
+    if(currentSlide === slides.length-1){
+      nextButton.style.display = 'none';
+      submitButton.style.display = 'inline-block';
+    }
+    else{
+      nextButton.style.display = 'inline-block';
+      submitButton.style.display = 'none';
+    }
+  }
+
+  function showNextSlide() {
+    showSlide(currentSlide + 1);
+  }
+
+  function showPreviousSlide() {
+    showSlide(currentSlide - 1);
+  }
+
+  // Variables
+  const quizContainer = document.getElementById('quiz');
+  const resultsContainer = document.getElementById('results');
+  const submitButton = document.getElementById('submit');
+  const myQuestions = [
+    {
+      question: "Anxious mood: Woories, anticipation of the worst, fearful anticipation, irritability",
+      answers: {
+        0: "0 Point",
+        1: "1 Point",
+        2: "2 Point",
+        3: "3 Point"
+      },
+      correctAnswer: "c"
+    },
+    {
+      question: "Tension: Feeling of tension, fatability, startle response, moved to tears easily, trembling, feelings of restlessness, inability to relax",
+      answers: {
+        0: "0 Point",
+        1: "1 Point",
+        2: "2 Point",
+        3: "3 Point"
+      },
+      correctAnswer: "c"
+    },{
+      question: "Fear: Of dark, of strangers, of being left alone, of animals, of traffuc, of crowds",
+      answers: {
+        0: "0 Point",
+        1: "1 Point",
+        2: "2 Point",
+        3: "3 Point"
+      },
+      correctAnswer: "c"
+    },
+    {
+      question: "Insomnia: Difficulty in falling asleep, broken sleep, unstatisfying sleep and fatigue on waking, dreams, nightmares, night terrors",
+      answers: {
+        0: "0 Point",
+        1: "1 Point",
+        2: "2 Point",
+        3: "3 Point"
+      },
+      correctAnswer: "c"
+    },
+    {
+      question: "Intellectual: Difficulty concentration, poor memory",
+      answers: {
+        0: "0 Point",
+        1: "1 Point",
+        2: "2 Point",
+        3: "3 Point"
+      },
+      correctAnswer: "c"
+    },
+    {
+      question: "Depressed Mood: Loss of intrest, lack of pleasure in lobbies, depression, early waking, diurnal swing",
+      answers: {
+        0: "0 Point",
+        1: "1 Point",
+        2: "2 Point",
+        3: "3 Point"
+      },
+      correctAnswer: "c"
+    },
+    {
+      question: "Somatic (Muscular): Pains and aches, twiching, stiffness, myoclonic jerks, grinding of teeth, unsteady voice, increased muscular tone",
+      answers: {
+        0: "0 Point",
+        1: "1 Point",
+        2: "2 Point",
+        3: "3 Point"
+      },
+      correctAnswer: "c"
+    },
+    {
+      question: "Cardovasculas Symptoms: Tachycardia, palpitations, pain in chest, throbbing of vessels, fainting feelings, missing beat",
+      answers: {
+        0: "0 Point",
+        1: "1 Point",
+        2: "2 Point",
+        3: "3 Point"
+      },
+      correctAnswer: "c"
+    },
+  ];
+
+  // Kick things off
+  buildQuiz();
+
+  // Pagination
+  const previousButton = document.getElementById("previous");
+  const nextButton = document.getElementById("next");
+  const slides = document.querySelectorAll(".slide");
+  let currentSlide = 0;
+
+  // Show the first slide
+  showSlide(currentSlide);
+
+  // Event listeners
+  submitButton.addEventListener('click', showResults);
+  previousButton.addEventListener("click", showPreviousSlide);
+  nextButton.addEventListener("click", showNextSlide);
+})();
+
+        </script>
+    <!-- header-start -->
+    
+    <!--/ footer end  -->
+    
+        <!-- JS here -->
+        <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="js/vendor/jquery-1.12.4.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/isotope.pkgd.min.js"></script>
+        <script src="js/ajax-form.js"></script>
+        <script src="js/waypoints.min.js"></script>
+        <script src="js/jquery.counterup.min.js"></script>
+        <script src="js/imagesloaded.pkgd.min.js"></script>
+        <script src="js/scrollIt.js"></script>
+        <script src="js/jquery.scrollUp.min.js"></script>
+        <script src="js/wow.min.js"></script>
+        <script src="js/nice-select.min.js"></script>
+        <script src="js/jquery.slicknav.min.js"></script>
+        <script src="js/jquery.magnific-popup.min.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/gijgo.min.js"></script>
+    
+        <!--contact js-->
+        <script src="js/contact.js"></script>
+        <script src="js/jquery.ajaxchimp.min.js"></script>
+        <script src="js/jquery.form.js"></script>
+        <script src="js/jquery.validate.min.js"></script>
+        <script src="js/mail-script.js"></script>
+    
+        <script src="js/main.js"></script>
+        <script>
+            $('#datepicker').datepicker({
+                iconsLibrary: 'fontawesome',
+                icons: {
+                 rightIcon: '<span class="fa fa-caret-down"></span>'
+             }
+            });
+            $('#datepicker2').datepicker({
+                iconsLibrary: 'fontawesome',
+                icons: {
+                 rightIcon: '<span class="fa fa-caret-down"></span>'
+             }
+    
+            });</script>
+            </body>
+<% include ./partials/footer %>
